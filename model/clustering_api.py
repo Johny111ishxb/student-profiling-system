@@ -266,11 +266,15 @@ async def test_endpoint():
 
 if __name__ == "__main__":
     import uvicorn
+    import os
+    
+    # Get port from environment variable (Railway/Heroku) or default to 8000
+    port = int(os.environ.get("PORT", 8000))
     
     print("\n" + "="*50)
     print("SCHOOL CLUSTERING API")
     print("="*50)
-    print(f"API URL: http://localhost:8000")
+    print(f"API URL: http://0.0.0.0:{port}")
     print(f"Model: {'Loaded' if MODEL_LOADED else '⚠️ Rule-based fallback'}")
     print(f"🎯 Clusters: 3")
     print("\nAvailable Endpoints:")
@@ -283,5 +287,5 @@ if __name__ == "__main__":
     print("="*50)
     print("\nServer starting...\n")
     
-    # Remove reload=True to fix the warning
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Production-ready configuration
+    uvicorn.run(app, host="0.0.0.0", port=port)
