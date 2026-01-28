@@ -28,7 +28,7 @@ import {
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 
-const API_URL = "http://localhost:8000";
+const API_URL = "https://student-profiling-system.onrender.com";
 
 const AnalyticsDashboard = () => {
   const [schoolData, setSchoolData] = useState<any[]>([]);
